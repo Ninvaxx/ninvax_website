@@ -7,3 +7,5 @@ This repository contains the source for Christopher Moore's personal website, **
 - `photography.html` – placeholder for photography work.
 
 The site remains minimal but now sports a bolder glass-effect layout with radial gradient backgrounds and smoother animations for a more modern feel.
+
+- `photography.html` – placeholder for photography work.
