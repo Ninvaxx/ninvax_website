@@ -1,70 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --accent-start: #a100ff;
+  --accent-end: #00d4ff;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0e0e0e;
-  color: #f1f1f1;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top left, #0d0d23, #14142c);
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
   text-align: center;
-  max-width: 600px;
-  padding: 2rem;
+  padding: 3rem 2rem;
+  max-width: 640px;
   width: 100%;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
 }
 
-h1 {
-  font-size: 2.5rem;
+.intro h1 {
+  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
 .highlight {
-  color: #00ffe1;
+  background: linear-gradient(60deg, var(--accent-start), var(--accent-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .tagline {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 2rem;
-  opacity: 0.8;
+  opacity: 0.9;
+}
+
+.tree {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.tree a {
+  color: var(--accent-end);
+  text-decoration: none;
+}
+
+.tree a:hover {
+  text-decoration: underline;
+}
+
+.links {
+  margin-top: 2rem;
 }
 
 .links a {
   display: inline-block;
   margin: 0.5rem;
   padding: 0.75rem 1.5rem;
+  color: #fff;
   text-decoration: none;
-  color: #0e0e0e;
-  background-color: #00ffe1;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  background: linear-gradient(60deg, var(--accent-start), var(--accent-end));
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .links a:hover {
-  background-color: #00c2ad;
-}
-
-/* Simple tree structure */
-.tree ul {
-  list-style: none;
-  padding-left: 1rem;
-  margin: 0.5rem 0;
-}
-
-.tree li {
-  margin: 0.25rem 0;
-}
-
-.tree a {
-  color: #00ffe1;
-  text-decoration: none;
-}
-
-.tree a:hover {
-  text-decoration: underline;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 details {
@@ -73,5 +88,15 @@ details {
 
 summary {
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  color: var(--accent-end);
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
