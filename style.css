@@ -7,13 +7,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
   text-align: center;
   max-width: 600px;
   padding: 2rem;
+  width: 100%;
 }
 
 h1 {
@@ -44,4 +45,33 @@ h1 {
 
 .links a:hover {
   background-color: #00c2ad;
+}
+
+/* Simple tree structure */
+.tree ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+.tree li {
+  margin: 0.25rem 0;
+}
+
+.tree a {
+  color: #00ffe1;
+  text-decoration: none;
+}
+
+.tree a:hover {
+  text-decoration: underline;
+}
+
+details {
+  margin-bottom: 1rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
 }
