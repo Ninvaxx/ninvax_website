@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --accent-start: #a100ff;
+  --accent-end: #00d4ff;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 :root {
@@ -6,6 +12,10 @@
 
 body {
   margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top left, #0d0d23, #14142c);
+  color: #ffffff;
+
   padding: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
@@ -14,14 +24,22 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
+
   animation: fadeIn 0.6s ease forwards;
 }
 
 .container {
   text-align: center;
-  max-width: 600px;
-  padding: 2rem;
+  padding: 3rem 2rem;
+  max-width: 640px;
   width: 100%;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -29,18 +47,33 @@ body {
   animation: fadeUp 0.6s ease forwards;
 }
 
-h1 {
-  font-size: 2.5rem;
+.intro h1 {
+  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
 .highlight {
+  background: linear-gradient(60deg, var(--accent-start), var(--accent-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--accent);
 }
 
 .tagline {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.tree {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.tree a {
+  color: var(--accent-end);
+  text-decoration: none;
+=======
   opacity: 0.8;
   color: #d0d0d0;
 }
@@ -62,25 +95,32 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Simple tree structure */
-.tree ul {
-  list-style: none;
-  padding-left: 1rem;
-  margin: 0.5rem 0;
+.tree a:hover {
+  text-decoration: underline;
 }
 
-.tree li {
-  margin: 0.25rem 0;
+.links {
+  margin-top: 2rem;
 }
 
+.links a {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
 
 .tree a {
   color: var(--accent);
   text-decoration: none;
+  background: linear-gradient(60deg, var(--accent-start), var(--accent-end));
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tree a:hover {
-  text-decoration: underline;
+.links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 details {
@@ -89,11 +129,18 @@ details {
 
 summary {
   cursor: pointer;
+  font-weight: 600;
   font-weight: bold;
   list-style: none;
 }
 
 summary::-webkit-details-marker {
+  color: var(--accent-end);
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
   color: var(--accent);
 }
 
