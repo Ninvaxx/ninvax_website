@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Gallery - Ninvaxx</title>
+  <title>Contact - Ninvaxx</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -17,12 +17,13 @@
   </header>
   <main>
     <section>
-      <h2>Gallery</h2>
-      <div id="gallery">
-        <img src="assets/images/sample1.jpg" alt="Sample 1" style="width:180px; margin:10px;" />
-        <img src="assets/images/sample2.jpg" alt="Sample 2" style="width:180px; margin:10px;" />
-        <!-- Add more images -->
-      </div>
+      <h2>Contact Me</h2>
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>Name:<br><input type="text" name="name" required></label><br>
+        <label>Email:<br><input type="email" name="email" required></label><br>
+        <label>Message:<br><textarea name="message" required></textarea></label><br>
+        <button type="submit">Send</button>
+      </form>
     </section>
   </main>
   <footer>
