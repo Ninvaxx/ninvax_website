@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('theme-toggle');
   const root = document.documentElement;
   const stored = localStorage.getItem('theme');
-  const defaultTheme = stored || 'ninvax';
+  // Set default theme to 'nina' (light)
+  const defaultTheme = stored || 'nina';
   root.setAttribute('data-theme', defaultTheme);
 
   toggle.addEventListener('click', () => {
