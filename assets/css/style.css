@@ -3,15 +3,33 @@
   --text: #eee;
   --accent-tan: #c2b280;   /* Cayotte tan */
   --accent-purple: #d100f6;/* Neon purple */
+  --font-sans: 'Inter', sans-serif;
+  --transition: 0.3s ease-in-out;
+}
+
+/* Ninvax theme (dark, glitch) */
+[data-theme="ninvax"] {
+  --bg: #0a0a0a;
+  --fg: #fafafa;
+  --accent: #ff00ff;
+  --font-main: var(--font-sans);
+  --glitch-color: rgba(255,0,255,0.2);
+}
+
+/* Nina theme (light, airy) */
+[data-theme="nina"] {
+  --bg: #ffffff;
+  --fg: #111111;
+  --accent: #00aaff;
+  --font-main: 'Helvetica Neue', sans-serif;
+  --glitch-color: rgba(0,170,255,0.2);
 }
 
 body {
   background: var(--bg);
-  color: var(--text);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+  color: var(--fg);
+  font-family: var(--font-main);
+  transition: background var(--transition), color var(--transition);
 }
 
 header, footer {
@@ -25,6 +43,11 @@ footer {
   border-top: 2px solid var(--accent-purple);
   border-bottom: none;
   margin-top: 2rem;
+}
+
+a {
+  color: var(--accent);
+  transition: color var(--transition);
 }
 
 nav a {
