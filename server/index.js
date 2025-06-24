@@ -1,12 +1,25 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require('nodemailer');
 const app = express();
 const PORT = 3000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Serve static images
-debugger;
 app.use('/images', express.static(path.join(__dirname, '../assets/images')));
+
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: process.env.SMTP_USER ? {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+    } : undefined
+});
 
 // Endpoint to list blog posts
 app.get('/api/blog-posts', (req, res) => {
@@ -36,6 +49,28 @@ app.get('/api/images', (req, res) => {
         // Only image files
         const imageFiles = files.filter(f => /\.(jpg|jpeg|png|gif)$/i.test(f));
         res.json(imageFiles);
+    });
+});
+
+app.post('/api/contact', (req, res) => {
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Missing fields' });
+    }
+
+    const mailOptions = {
+        from: process.env.SMTP_FROM || email,
+        to: 'ninvax@icloud.com',
+        subject: `Contact form submission from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\n\n${message}`
+    };
+
+    transporter.sendMail(mailOptions, (err) => {
+        if (err) {
+            console.error('Email error:', err);
+            return res.status(500).json({ error: 'Failed to send message' });
+        }
+        res.json({ success: true });
     });
 });
 

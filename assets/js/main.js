@@ -1,10 +1,24 @@
 // You can add more JS as needed. Example: gallery lightbox, contact form validation, etc.
 document.addEventListener('DOMContentLoaded', () => {
-  // Example: Confirm form submission
+  // CONTACT PAGE: submit form via fetch
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', function(e) {
-      alert('Thank you for your message!');
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(formData)
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('Request failed');
+          return res.json();
+        })
+        .then(() => {
+          alert('Thank you for your message!');
+          form.reset();
+        })
+        .catch(() => alert('There was an error sending your message.'));
     });
   }
 
